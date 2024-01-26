@@ -1,0 +1,42 @@
+
+# Criando nossas entradas de dados
+
+type Category {
+    id: ID!
+    name: String!
+    description: String
+    courses: [Course!]!
+}
+
+type Course {
+    id: ID!
+    name: String!
+    description: String
+    category : Category!
+}
+
+
+# Criando inputs de dados
+input NewCategory {
+    name: String!
+    description: String
+
+}
+
+input NewCourse {
+    name: String!
+    description: String
+    categoryId: ID!
+}
+
+# Criando consultas
+type Query {
+    categories: [Category!]!
+    courses: [Course!]!
+}
+
+# Criando mutations para alteração de dados, adicionar, mudanças
+type Mutation {
+    createCategory(input: NewCategory!): Category!
+    createCourse(input: NewCourse!): Course!
+}
